@@ -5,5 +5,5 @@
     Author            = 'GVBYTE'
     Description       = 'GVBYTE custom AD classes and functions'
     PowerShellVersion = '5.1'
-    FunctionsToExport = @('Get-ADInfo','Get-ADEndpoints','Get-ADServers')
+    FunctionsToExport = @('Get-ADInfo','Get-ADEndpoints','Get-AllServersEnabled')
 }
