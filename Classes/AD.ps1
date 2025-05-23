@@ -7,7 +7,7 @@ class AD {
             $Endpoints = Get-ADcomputer -Filter {Enabled -eq $true -and LastLogonDate -gt $cutoff} -Properties LastLogonDate | Select-Object Name, OperatingSystemm, LastLogonDate;
         }
         catch {
-            Trace-Error -module "AD" -message "Failed to query Active Directory";
+            Write-LogError -module "AD" -message "Failed to query Active Directory";
             $Endpoints = $null
         }
         return $Endpoints;
@@ -25,10 +25,10 @@ class AD {
                 $ADQuery | Where-Object {$_.Name -like "$($CurrentPrefix)*"}
                 }
             }catch {
-                Trace-Error -module "AD" -message "Failed to query Active Directory";
+                Write-LogError -module "AD" -message "Failed to query Active Directory";
             }
         }
-        if(($Uniquejson).Count -eq 0){Trace-Error -module "AD" -message "Failed to find any prefixes for Servers";}
+        if(($Uniquejson).Count -eq 0){Write-LogError -module "AD" -message "Failed to find any prefixes for Servers";}
         return $Results
     }
 
